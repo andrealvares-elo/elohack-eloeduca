@@ -28,8 +28,8 @@ public class FinancialPlan {
 
     @Data
     public static class FinanceEvolution {
-        private int month;
-        private int year;
+        private String month;
+        private String year;
         private String goalDescription;
         private Double totalIncome;
         private Double totalExpense;

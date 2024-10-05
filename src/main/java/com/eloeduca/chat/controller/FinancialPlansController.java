@@ -36,20 +36,17 @@ public class FinancialPlansController {
                 "Objetivo de longo prazo: " + longTermGoal + "\n" +
                 "As movimentações financeiras do usuário estão listadas abaixo em formato JSON:" + "\n" +
                 financeSummary.toJson() + "\n" +
-                "Gere um plano financeiro de 3 meses para que esse usuário possa atingir seus objetivos financeiros." +
-                "Gere a resposta no formato JSON conforme exemplo: {" +
-                "\"shortTermGoal\": \"\", " +
-                "\"longTermGoal\": \"\", " +
+                "Gere um plano financeiro para que esse usuário possa atingir seus objetivos financeiros. " +
+                "Crie a evolução do plano até que ele atinja a proporção correta de 50/30/20. " +
+                "Gere a resposta no formato JSON conforme exemplo: \n" +
+                " " +
+                "{" + "\"shortTermGoal\": \"Pagar dívidas\", " +
+                "\"longTermGoal\": \"Comprar um imovel\", " +
                 "\"planEvolutions\": [" +
-                "{\"month\": 1, " +
-                "\"year\": 2021, " +
-                "\"goalDescription\": \"\", " +
-                "\"totalIncome\": 0.0, " +
-                "\"totalExpense\": 0.0, " +
-                "\"totalEssentialExpense\": 0.0, " +
-                "\"totalNonEssentialExpense\": 0.0, " +
-                "\"totalInvestment\": 0.0}" +
-                "]}" + "\n" +
+                "{\"month\": \"\", \"year\": \"2024\", " +
+                "\"goalDescription\": \"Diminuir despesas não essenciais em 20%. Aumentar os investimentos em 5%.\", " +
+                "\"totalIncome\": 1500.0, \"totalExpense\": 2500.0, \"totalEssentialExpense\": 1500.0, \"totalNonEssentialExpense\": 1000.0,  \"totalInvestment\": 0.0}]}" + "\n" +
+                " " +
                 "Não faça comentários adicionais. Apenas gere o plano financeiro.";
 
         var response = this.chatClient
@@ -58,6 +55,9 @@ public class FinancialPlansController {
                 .call()
                 .chatResponse();
 
-        return FinancialPlan.fromJson(response.getResult().getOutput().getContent());
+        var plan = FinancialPlan.fromJson(response.getResult().getOutput().getContent());
+        plan.setCurrentFinanceOverview(financeSummary);
+
+        return plan;
     }
 }
