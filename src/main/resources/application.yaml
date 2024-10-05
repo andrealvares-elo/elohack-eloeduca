@@ -1,13 +1,7 @@
 spring:
   ai:
-    azure:
-      openai:
-        endpoint:
-        apiKey:
-        region:
-        api-version:
-        chat:
-          options:
-            temperature: 1.0
-            #max_tokens:
-            deployment-name:
+    ollama:
+      chat:
+        enabled: true
+        options:
+          model: "llama3.1:latest"
