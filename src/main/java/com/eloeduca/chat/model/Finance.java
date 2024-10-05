@@ -34,10 +34,10 @@ public class Finance {
     }
 
     public enum Type {
-        INCOME , EXPENSE;
+        INCOME , EXPENSE, INVESTMENT;
     }
 
     public enum ExpenseBucket {
-        ESSENTIAL, NON_ESSENTIAL
+        ESSENTIAL, NON_ESSENTIAL;
     }
 }

@@ -2,12 +2,13 @@ package com.eloeduca.chat.controller;
 
 
 import com.eloeduca.chat.model.Finance;
+import com.eloeduca.chat.model.FinanceSummary;
 import com.eloeduca.chat.repository.FinanceRepository;
+import com.eloeduca.chat.service.FinanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/finances")
@@ -15,6 +16,9 @@ public class FinanceController {
 
     @Autowired
     private FinanceRepository financeRepository;
+
+    @Autowired
+    private FinanceService financeService;
 
     @GetMapping
     public List<Finance> getAllFinances() {
@@ -34,5 +38,10 @@ public class FinanceController {
     @DeleteMapping("/{id}")
     public void deleteFinance(@PathVariable Long id) {
         financeRepository.deleteById(id);
+    }
+
+    @GetMapping("/summary")
+    public FinanceSummary getSummary() {
+        return financeService.getFinanceSummary();
     }
 }

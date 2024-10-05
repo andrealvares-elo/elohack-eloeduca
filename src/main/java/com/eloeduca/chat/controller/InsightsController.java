@@ -3,10 +3,7 @@ package com.eloeduca.chat.controller;
 import com.eloeduca.chat.service.FinanceService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("insights")
@@ -25,8 +22,8 @@ public class InsightsController {
             .build();
   }
 
-  @PostMapping("/generate")
-  public PromptResponse generate() {
+  @GetMapping
+  public PromptResponse getInsight() {
 
     var financeSummary = financeService.getFinanceSummary();
 

@@ -39,11 +39,17 @@ public class FinanceService {
                 .mapToDouble(Finance::getAmount)
                 .sum();
 
+        var totalInvestment = transactions.stream()
+                .filter(finance -> finance.getType() == Finance.Type.INVESTMENT)
+                .mapToDouble(Finance::getAmount)
+                .sum();
+
         return FinanceSummary.builder()
                 .totalIncome(totalIncome)
                 .totalExpense(totalExpense)
                 .totalEssentialExpense(totalEssentialExpense)
                 .totalNonEssentialExpense(totalNonEssentialExpense)
+                .totalInvestment(totalInvestment)
                 .transactions(transactions)
                 .build();
     }

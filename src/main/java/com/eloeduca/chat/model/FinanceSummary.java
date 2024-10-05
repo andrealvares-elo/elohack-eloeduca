@@ -15,6 +15,7 @@ public class FinanceSummary {
     private Double totalExpense;
     private Double totalEssentialExpense;
     private Double totalNonEssentialExpense;
+    private Double totalInvestment;
     private List<Finance> transactions;
 
     @SneakyThrows
