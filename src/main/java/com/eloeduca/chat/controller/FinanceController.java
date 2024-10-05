@@ -40,6 +40,11 @@ public class FinanceController {
         financeRepository.deleteById(id);
     }
 
+    @DeleteMapping("/many")
+    public void deleteMany() {
+        financeRepository.deleteAll();
+    }
+
     @GetMapping("/summary")
     public FinanceSummary getSummary() {
         return financeService.getFinanceSummary();
