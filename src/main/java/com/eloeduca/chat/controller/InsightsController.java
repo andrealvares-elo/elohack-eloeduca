@@ -22,6 +22,7 @@ public class InsightsController {
             .build();
   }
 
+  @CrossOrigin(origins = "*")
   @GetMapping
   public PromptResponse getInsight() {
 
