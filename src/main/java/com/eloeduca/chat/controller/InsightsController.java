@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("insights")
+@CrossOrigin(origins = "*")
 public class InsightsController {
 
   private final FinanceService financeService;
@@ -22,7 +23,6 @@ public class InsightsController {
             .build();
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping
   public PromptResponse getInsight() {
 
@@ -42,3 +42,4 @@ public class InsightsController {
   }
 
 }
+

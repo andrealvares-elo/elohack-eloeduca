@@ -27,7 +27,8 @@ public class ChatAiClient {
     this.chatClient = ChatClient
         .builder(chatModel)
         .defaultSystem("Você é um sistema especialista em assuntos financeiros, "
-            + "que ajuda com dúvidas financeiras e na organização de gastos, despesas e receitas.")
+            + "que ajuda com dúvidas financeiras e na organização de gastos, despesas e receitas." +
+                "Responda respostas curtas e objetivas.")
         .defaultAdvisors(new MessageChatMemoryAdvisor(chatMemory))
         .build();
   }
